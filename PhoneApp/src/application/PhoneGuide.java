@@ -5,10 +5,9 @@ import models.iPhone;
 import ui.UserInput;
 import ui.UserOutput;
 import utilities.CsvImport;
-import utilities.PhoneLookUp;
+import utilities.PhoneLookup;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,14 +29,13 @@ public class PhoneGuide {
         String userModel = "";
         String userCondition = "";
         String userWirelessCarrier = "";
-        // defaulting to iphone for now, but need to set up for multiple models
-        Phone userDevice = new iPhone();
 
         while(!exitLoop) {
             UserOutput.displayHomePage();
             userInput = UserInput.getUserInput();
             if(userInput.equalsIgnoreCase("4")) {
                 exitLoop = true;
+                // the section belows deals with the selling process
             } else if(userInput.equals("1")) {
                 while(!exitLoop) {
                     UserOutput.displayDeviceTypeSelectionPage();
@@ -48,12 +46,8 @@ public class PhoneGuide {
                         exitLoop = true;
                         // need to adjust the string below to be based on the list and not hardcoded
                     } else if(supportedDeviceTypesString.contains(userInput.toUpperCase())) {
-                        // set the device type based on input
-                        // just doing iphone for now
-                        if(userInput.equalsIgnoreCase("iphone")) {
-                            userDeviceType = "iPhone";
-                            userBrand = "Apple";
-                        }
+                        Phone userDevice = PhoneLookup.createUserPhone(userInput);
+                        PhoneLookup.setDeviceTypeAndBrand(userInput, userDevice);
                         while (!exitLoop) {
                             UserOutput.displayDeviceModelSelectionPage();
                             userInput = UserInput.getUserInput();
@@ -95,14 +89,12 @@ public class PhoneGuide {
                                                         }
                                                         while(!exitLoop) {
                                                             UserOutput.displayDeviceMarketValuePage();
-                                                            userDevice.setDeviceType(userDeviceType);
-                                                            userDevice.setBrand(userBrand);
                                                             userDevice.setModel(userModel);
                                                             userDevice.setWirelessCarrier(userWirelessCarrier);
                                                             userDevice.setCondition(userCondition);
                                                             System.out.println(userDevice);
                                                             System.out.println();
-                                                            System.out.println("Market value: $" + PhoneLookUp.getMarketValue(supportedDeviceList, userDevice));
+                                                            System.out.println("Market value: $" + PhoneLookup.getMarketValue(supportedDeviceList, userDevice));
                                                             System.out.println();
                                                             exitLoop = true;
                                                         }
@@ -131,11 +123,16 @@ public class PhoneGuide {
                     }
                 }
                 exitLoop = false;
-            }
-            // exitLoop = false;
-        }
+                // the section belows deals with the selling process
+            } else if(userInput.equals("2")) {
 
+                // the section belows deals with the repair quote process
+            } else if(userInput.equals("3")) {
+
+            } else {
+                UserOutput.displayInvalidInputMessage("Please enter 1, 2, or 3 if you wish to check the market value of your device or receive a repair quote.\nOtherwise, enter 4 to exit the program.");
+            }
+        }
     }
 }
 
-// method for mapping device strings to a phone
