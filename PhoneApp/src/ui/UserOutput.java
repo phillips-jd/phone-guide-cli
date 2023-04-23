@@ -104,12 +104,14 @@ public class UserOutput {
         System.out.println();
         System.out.println("Here's a short description for each condition if you're having trouble deciding: ");
         System.out.println();
-        System.out.println("Fair: Device is functional but shows aggressive signs of wear and tear; scratches on the screen,");
-        System.out.println("      dents or scratches on the frame, and/or small chips on the back glass or rear camera lens.");
-        System.out.println("Good: Device is functional but shows mild signs of wear and tear; light scratches on the screen,");
-        System.out.println("      light scratches on the frame but no dents, scratches on the back glass but no chips.");
-        System.out.println("Excellent: Device is functional and shows trivial signs of wear and tear; little to no signs of");
-        System.out.println("           scratches on the screen, frame, back glass or rear camera lens. Could be described as mint.");
+        System.out.println("Fair:       Device is functional but shows aggressive signs of wear and tear; scratches on the screen,");
+        System.out.println("            dents or scratches on the frame, and/or small chips on the back glass or rear camera lens.");
+        System.out.println();
+        System.out.println("Good:       Device is functional but shows mild signs of wear and tear; light scratches on the screen,");
+        System.out.println("            light scratches on the frame but no dents, scratches on the back glass but no chips.");
+        System.out.println();
+        System.out.println("Excellent:  Device is functional and shows trivial signs of wear and tear; little to no signs of");
+        System.out.println("            scratches on the screen, frame, back glass or rear camera lens. Could be described as mint.");
         System.out.println();
     }
 

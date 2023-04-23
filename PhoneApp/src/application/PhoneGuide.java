@@ -5,6 +5,7 @@ import models.iPhone;
 import ui.UserInput;
 import ui.UserOutput;
 import utilities.CsvImport;
+import utilities.PhoneLookUp;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,13 +24,14 @@ public class PhoneGuide {
         File sourceFile = new File(filePath);
         List<Phone> supportedDeviceList = sourceFileImport.importSourceFileToList(sourceFile);
         Map<String, String> supportedDeviceMap = sourceFileImport.importSourceFileToMap(sourceFile);
-        String supportedDeviceTypesString = "iphone";
-        String userDeviceType;
-        String userBrand;
-        String userModel;
-        String userCondition;
-        String userWirelessCarrier;
-        Phone userDevice;
+        String supportedDeviceTypesString = "IPHONE";
+        String userDeviceType = "";
+        String userBrand = "";
+        String userModel = "";
+        String userCondition = "";
+        String userWirelessCarrier = "";
+        // defaulting to iphone for now, but need to set up for multiple models
+        Phone userDevice = new iPhone();
 
         while(!exitLoop) {
             UserOutput.displayHomePage();
@@ -44,7 +46,8 @@ public class PhoneGuide {
                         UserOutput.displaySupportedDeviceType(supportedDeviceList);
                     } else if(userInput.equalsIgnoreCase("exit")) {
                         exitLoop = true;
-                    } else if(supportedDeviceTypesString.contains(userInput.toLowerCase())) {
+                        // need to adjust the string below to be based on the list and not hardcoded
+                    } else if(supportedDeviceTypesString.contains(userInput.toUpperCase())) {
                         // set the device type based on input
                         // just doing iphone for now
                         if(userInput.equalsIgnoreCase("iphone")) {
@@ -58,11 +61,8 @@ public class PhoneGuide {
                                 UserOutput.displaySupportedDeviceMap(supportedDeviceMap);
                             } else if(userInput.equalsIgnoreCase("exit")) {
                                 exitLoop = true;
-                                // ******************
-                                // bug here
-                                // ******************
                             } else if(supportedDeviceMap.containsKey(userInput.toUpperCase())) {
-                                userModel = userInput;
+                                userModel = userInput.toUpperCase();
                                 while(!exitLoop) {
                                     UserOutput.displayFunctionCheckPageIfSelling();
                                     userInput = UserInput.getUserInput();
@@ -83,14 +83,29 @@ public class PhoneGuide {
                                                 while(!exitLoop) {
                                                     UserOutput.displayDeviceCarrierSelectionPage();
                                                     userInput = UserInput.getUserInput();
-                                                    if(userInput.equals("1")) {
-                                                        userWirelessCarrier = "Verizon";
-                                                    } else if(userInput.equals("2")) {
-                                                        userWirelessCarrier = "AT&T";
-                                                    } else if(userInput.equals("3")) {
-                                                        userWirelessCarrier = "T-Mobile";
-                                                    } else if(userInput.equals("4")) {
-                                                        userWirelessCarrier = "Unlocked";
+                                                    if(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")) {
+                                                        if(userInput.equals("1")) {
+                                                            userWirelessCarrier = "Verizon";
+                                                        } else if(userInput.equals("2")) {
+                                                            userWirelessCarrier = "AT&T";
+                                                        } else if(userInput.equals("3")) {
+                                                            userWirelessCarrier = "T-Mobile";
+                                                        } else if(userInput.equals("4")) {
+                                                            userWirelessCarrier = "Unlocked";
+                                                        }
+                                                        while(!exitLoop) {
+                                                            UserOutput.displayDeviceMarketValuePage();
+                                                            userDevice.setDeviceType(userDeviceType);
+                                                            userDevice.setBrand(userBrand);
+                                                            userDevice.setModel(userModel);
+                                                            userDevice.setWirelessCarrier(userWirelessCarrier);
+                                                            userDevice.setCondition(userCondition);
+                                                            System.out.println(userDevice);
+                                                            System.out.println();
+                                                            System.out.println("Market value: $" + PhoneLookUp.getMarketValue(supportedDeviceList, userDevice));
+                                                            System.out.println();
+                                                            exitLoop = true;
+                                                        }
                                                     } else if(userInput.equals("5")) {
                                                         exitLoop = true;
                                                     } else {
@@ -123,3 +138,4 @@ public class PhoneGuide {
     }
 }
 
+// method for mapping device strings to a phone

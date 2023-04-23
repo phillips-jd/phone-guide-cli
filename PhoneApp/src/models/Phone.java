@@ -81,9 +81,27 @@ public abstract class Phone implements Repairable {
         this.condition = condition;
     }
 
+    public BigDecimal getPreownedMarketValue() {
+        return preownedMarketValue;
+    }
+
+    public void setPreownedMarketValue(BigDecimal preownedMarketValue) {
+        this.preownedMarketValue = preownedMarketValue;
+    }
 
     // Methods
-
+    @Override
+    public String toString() {
+        String phoneString =
+                "\n------------------------" +
+                "\n Device Details" +
+                "\n------------------------" +
+                "\n Brand: " + this.brand +
+                "\n Model: " + this.model +
+                "\n Wireless Carrier: " + this.wirelessCarrier +
+                "\n Condition: " + this.condition;
+        return phoneString;
+    }
 
 
 }
