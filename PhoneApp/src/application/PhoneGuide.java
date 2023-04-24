@@ -9,6 +9,7 @@ import utilities.PhoneCreator;
 import utilities.PhoneLookup;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class PhoneGuide {
         File sourceFile = new File(filePath);
         List<Phone> supportedDeviceList = sourceFileImport.importSourceFileToList(sourceFile);
         Map<String, String> supportedDeviceMap = sourceFileImport.importSourceFileToMap(sourceFile);
-        String supportedDeviceTypesString = "IPHONE";
+        List<String> supportedDeviceTypeList = createSupportedDeviceTypeList(supportedDeviceList);
 
         while(!exitLoop) {
             UserOutput.displayHomePage();
@@ -40,8 +41,7 @@ public class PhoneGuide {
                         UserOutput.displaySupportedDeviceType(supportedDeviceList);
                     } else if(userInput.equalsIgnoreCase("exit")) {
                         exitLoop = true;
-                        // need to adjust the string below to be based on the list and not hardcoded
-                    } else if(supportedDeviceTypesString.contains(userInput.toUpperCase())) {
+                    } else if(supportedDeviceTypeList.contains(userInput.toUpperCase())) {
                         Phone userDevice = PhoneCreator.createUserPhone(userInput);
                         PhoneCreator.setDeviceTypeAndBrand(userInput, userDevice);
                         while (!exitLoop) {
@@ -80,25 +80,32 @@ public class PhoneGuide {
                                                     } else if(userInput.equals("5")) {
                                                         exitLoop = true;
                                                     } else {
-                                                        UserOutput.displayInvalidInputMessage("Please enter 1, 2, 3, or 4 for device carrier, or enter 5 to exit to the home page.");
+                                                        UserOutput.displayInvalidInputMessage("Enter 1, 2, 3, or 4 for device carrier" +
+                                                                                             "\nEnter 5 to exit to the home page");
                                                     }
                                                 }
                                             } else if(userInput.equals("4")) {
                                                 exitLoop = true;
                                             } else {
-                                                UserOutput.displayInvalidInputMessage("Please enter 1, 2, or 3 for device condition, or enter 4 to exit to the home page.");
+                                                UserOutput.displayInvalidInputMessage("Enter 1, 2, or 3 for device condition" +
+                                                                                     "\nEnter 4 to exit to the home page");
                                             }
                                         }
                                     } else {
-                                        UserOutput.displayInvalidInputMessage("Please enter 1 to go back to the home page, or enter 2 to proceed to the next step.");
+                                        UserOutput.displayInvalidInputMessage("Enter 1 to go back to the home page" +
+                                                                             "\nEnter 2 to proceed to the next step");
                                     }
                                 }
                             } else {
-                                UserOutput.displayInvalidInputMessage("Please ask for the supported device model list, enter the device model you want to select or exit to the home page.");
+                                UserOutput.displayInvalidInputMessage("Enter \"device list\" or \"list\" for the supported device model list" +
+                                                                     "\nEnter the device model you want to select" +
+                                                                     "\nEnter \"exit\" to go back to the home page");
                             }
                         }
                     } else {
-                        UserOutput.displayInvalidInputMessage("Please ask for the supported device type list, enter the device type you want to select or exit to the home page.");
+                        UserOutput.displayInvalidInputMessage("Enter \"type list\" or \"list\" for the supported device type list" +
+                                                             "\nEnter the device type you want to select" +
+                                                             "\nEnter \"exit\" to go back to the home page");
                     }
                 }
                 exitLoop = false;
@@ -109,9 +116,31 @@ public class PhoneGuide {
             } else if(userInput.equals("3")) {
 
             } else {
-                UserOutput.displayInvalidInputMessage("Please enter 1, 2, or 3 if you wish to check the market value of your device or receive a repair quote.\nOtherwise, enter 4 to exit the program.");
+                UserOutput.displayInvalidInputMessage("Enter 1 to check the market value of your device" +
+                                                     "\nEnter 2 to check the market value of a device you would like to purchase" +
+                                                     "\nEnter 3 to receive a repair quote" +
+                                                     "\nEnter 4 to exit the program");
             }
         }
     }
+
+    // purpose of this method is to create a list of device types without duplicates
+    // this list is used to compare the user's input on the "displayDeviceTypeSelectionPage"
+            // if the list contains the user's input, they can proceed to the next step
+    // supportedDeviceList has hundreds of the same device type due to different models
+    // Ex: Device Type: iPhone includes iPhone 11, iPhone 12, etc.
+    public static List<String> createSupportedDeviceTypeList(List<Phone> supportedDeviceList) {
+        List<String> supportedDeviceTypeList = new ArrayList<>();
+        for(Phone currentPhone : supportedDeviceList) {
+            if(supportedDeviceTypeList.contains(currentPhone.getDeviceType())) {
+                continue;
+            } else {
+                supportedDeviceTypeList.add(currentPhone.getDeviceType());
+            }
+        }
+        return supportedDeviceTypeList;
+    }
+
+
 }
 

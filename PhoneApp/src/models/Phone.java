@@ -94,12 +94,12 @@ public abstract class Phone implements Repairable {
     public String toString() {
         String phoneString =
                 "\n------------------------" +
-                "\n Device Details" +
+                "\nDevice Details" +
                 "\n------------------------" +
-                "\n Brand: " + this.brand +
-                "\n Model: " + this.model +
-                "\n Wireless Carrier: " + this.wirelessCarrier +
-                "\n Condition: " + this.condition;
+                "\nBrand: " + this.brand +
+                "\nModel: " + this.model +
+                "\nWireless Carrier: " + this.wirelessCarrier +
+                "\nCondition: " + this.condition;
         return phoneString;
     }
 
