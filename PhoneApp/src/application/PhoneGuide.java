@@ -105,7 +105,8 @@ public class PhoneGuide {
                     }
                 }
                 exitLoop = false;
-                // the section belows deals with the selling process
+                // the section belows deals with the buying process
+                // scope change: create a list of phones for comparison?
             } else if(userInput.equals("2")) {
 
                 // the section belows deals with the repair quote process

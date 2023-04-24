@@ -4,17 +4,23 @@ import java.math.BigDecimal;
 
 public class SamsungGalaxy extends Phone{
 
-    public SamsungGalaxy () {
+    public SamsungGalaxy() {
         super();
     }
 
-    public SamsungGalaxy (String deviceType, String brand, String model) {
+    public SamsungGalaxy(String deviceType, String brand, String model) {
         super(deviceType, brand, model);
     }
 
-    public SamsungGalaxy (String deviceType, String brand, String model, String wirelessCarrier,
-                    String condition, BigDecimal preownedMarketValue) {
-        super(deviceType, brand, model, wirelessCarrier, condition, preownedMarketValue);
+    public SamsungGalaxy(String deviceType, String brand, String model, String wirelessCarrier,
+                       String condition, BigDecimal averagePreownedMarketValue) {
+        super(deviceType, brand, model, wirelessCarrier, condition, averagePreownedMarketValue);
+    }
+
+    public SamsungGalaxy(String deviceType, String brand, String model, String wirelessCarrier,
+                       String condition, BigDecimal averagePreownedMarketValue,
+                       BigDecimal swappaMarketValue, BigDecimal ebayMarketValue, BigDecimal gazelleMarketValue) {
+        super(deviceType, brand, model, wirelessCarrier, condition, averagePreownedMarketValue, swappaMarketValue, ebayMarketValue, gazelleMarketValue);
     }
 
 }
