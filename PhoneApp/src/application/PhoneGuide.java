@@ -70,11 +70,7 @@ public class PhoneGuide {
                                                     if(userInput.equals("1") || userInput.equals("2") || userInput.equals("3") || userInput.equals("4")) {
                                                         PhoneCreator.setDeviceWirelessCarrier(userInput, userDevice);
                                                         while(!exitLoop) {
-                                                            UserOutput.displayDeviceMarketValuePage();
-                                                            System.out.println(userDevice);
-                                                            System.out.println();
-                                                            System.out.println("Market value: $" + PhoneLookup.getMarketValue(supportedDeviceList, userDevice));
-                                                            System.out.println();
+                                                            UserOutput.displayDeviceMarketValuePage(supportedDeviceList, userDevice);
                                                             exitLoop = true;
                                                         }
                                                     } else if(userInput.equals("5")) {

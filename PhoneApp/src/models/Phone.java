@@ -14,7 +14,10 @@ public abstract class Phone implements Repairable {
     private String condition;
     private boolean isBroken = false;
     private boolean isRepairable = true;
-    private BigDecimal preownedMarketValue;
+    private BigDecimal averagePreownedMarketValue;
+    private BigDecimal swappaMarketValue;
+    private BigDecimal ebayMarketValue;
+    private BigDecimal gazelleMarketValue;
     private BigDecimal repairCost;
 
 
@@ -31,11 +34,20 @@ public abstract class Phone implements Repairable {
     }
 
     public Phone (String deviceType, String brand, String model, String wirelessCarrier,
-                  String condition, BigDecimal preownedMarketValue) {
+                  String condition, BigDecimal averagePreownedMarketValue) {
         this(deviceType, brand, model);
         this.wirelessCarrier = wirelessCarrier;
         this.condition = condition;
-        this.preownedMarketValue = preownedMarketValue;
+        this.averagePreownedMarketValue = averagePreownedMarketValue;
+    }
+
+    public Phone (String deviceType, String brand, String model, String wirelessCarrier,
+                  String condition, BigDecimal averagePreownedMarketValue,
+                  BigDecimal swappaMarketValue, BigDecimal ebayMarketValue, BigDecimal gazelleMarketValue) {
+        this(deviceType, brand, model, wirelessCarrier, condition, averagePreownedMarketValue);
+        this.swappaMarketValue = swappaMarketValue;
+        this.ebayMarketValue = ebayMarketValue;
+        this.gazelleMarketValue = gazelleMarketValue;
     }
 
 
@@ -81,12 +93,36 @@ public abstract class Phone implements Repairable {
         this.condition = condition;
     }
 
-    public BigDecimal getPreownedMarketValue() {
-        return preownedMarketValue;
+    public BigDecimal getAveragePreownedMarketValue() {
+        return averagePreownedMarketValue;
     }
 
-    public void setPreownedMarketValue(BigDecimal preownedMarketValue) {
-        this.preownedMarketValue = preownedMarketValue;
+    public void setAveragePreownedMarketValue(BigDecimal preownedMarketValue) {
+        this.averagePreownedMarketValue = preownedMarketValue;
+    }
+
+    public BigDecimal getSwappaMarketValue() {
+        return swappaMarketValue;
+    }
+
+    public void setSwappaMarketValue(BigDecimal swappaMarketValue) {
+        this.swappaMarketValue = swappaMarketValue;
+    }
+
+    public BigDecimal getEbayMarketValue() {
+        return ebayMarketValue;
+    }
+
+    public void setEbayMarketValue(BigDecimal ebayMarketValue) {
+        this.ebayMarketValue = ebayMarketValue;
+    }
+
+    public BigDecimal getGazelleMarketValue() {
+        return gazelleMarketValue;
+    }
+
+    public void setGazelleMarketValue(BigDecimal gazelleMarketValue) {
+        this.gazelleMarketValue = gazelleMarketValue;
     }
 
     // Methods

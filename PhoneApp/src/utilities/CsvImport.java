@@ -21,8 +21,10 @@ public class CsvImport {
                 String[] sourceFileStringToArray = sourceFileLine.split(",");
                 String phoneType = sourceFileStringToArray[0];
                 if(phoneType.equalsIgnoreCase("iphone")) {
-                    supportedDeviceList.add(new iPhone(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(), sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                    sourceFileStringToArray[4].toUpperCase(), new BigDecimal(sourceFileStringToArray[5])));
+                    supportedDeviceList.add(new iPhone(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
+                            sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(), sourceFileStringToArray[4].toUpperCase(),
+                            new BigDecimal(sourceFileStringToArray[5]), new BigDecimal(sourceFileStringToArray[6]),
+                            new BigDecimal(sourceFileStringToArray[7]), new BigDecimal(sourceFileStringToArray[8])));
                 } // else if(phoneType.equalsIgnoreCase("samsung galaxy")) {
 //                    supportedDeviceList.add(new SamsungGalaxy(sourceFileStringToArray[0], sourceFileStringToArray[1], sourceFileStringToArray[2], sourceFileStringToArray[3],
 //                    sourceFileStringToArray[4], new BigDecimal(sourceFileStringToArray[5])));

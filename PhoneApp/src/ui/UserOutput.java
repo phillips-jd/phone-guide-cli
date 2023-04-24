@@ -1,6 +1,7 @@
 package ui;
 
 import models.Phone;
+import utilities.PhoneLookup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,9 +129,16 @@ public class UserOutput {
         System.out.println();
     }
 
-    public static void displayDeviceMarketValuePage() {
+    public static void displayDeviceMarketValuePage(List<Phone> supportedDeviceList, Phone userPhone) {
         System.out.println();
         System.out.println("Thanks for the information! The market value for the device you selected is below: ");
+        System.out.println();
+        System.out.println(userPhone);
+        System.out.println();
+        System.out.println("Average market value: $" + PhoneLookup.getMarketValue(supportedDeviceList, userPhone));
+        System.out.println("Swappa market value: $" + PhoneLookup.getSwappaValue(supportedDeviceList, userPhone));
+        System.out.println("eBay market value: $" + PhoneLookup.getEbayValue(supportedDeviceList, userPhone));
+        System.out.println("Gazelle market value: $" + PhoneLookup.getGazelleValue(supportedDeviceList, userPhone));
         System.out.println();
     }
 
