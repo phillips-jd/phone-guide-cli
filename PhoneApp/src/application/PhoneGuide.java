@@ -5,6 +5,8 @@ import models.phonepart.PhonePart;
 import ui.UserInput;
 import ui.UserOutput;
 import utilities.CsvImport;
+import utilities.PartCreator;
+import utilities.PartLookup;
 import utilities.PhoneCreator;
 
 import java.io.File;
@@ -112,7 +114,56 @@ public class PhoneGuide {
 
                 // the section belows deals with the repair quote process
             } else if(userInput.equals("3")) {
-
+                while (!exitLoop) {
+                    UserOutput.displayRepairSelectionPage();
+                    userInput = UserInput.getUserInput();
+                    if (userInput.equalsIgnoreCase("repair list") || userInput.equalsIgnoreCase("list")) {
+                        UserOutput.displaySupportedRepairTypes(supportedRepairList);
+                    } else if (userInput.equalsIgnoreCase("exit")) {
+                        exitLoop = true;
+                    } else if (supportedRepairList.contains(userInput.toUpperCase())) {
+                        PhonePart userPart = PartCreator.createUserPartForRepairQuote(userInput);
+                        while (!exitLoop) {
+                            UserOutput.displayDeviceTypeSelectionPage();
+                            userInput = UserInput.getUserInput();
+                            if (userInput.equalsIgnoreCase("type list") || userInput.equalsIgnoreCase("list")) {
+                                UserOutput.displaySupportedDeviceType(supportedDeviceList);
+                            } else if (userInput.equalsIgnoreCase("exit")) {
+                                exitLoop = true;
+                            } else if (supportedDeviceTypeList.contains(userInput.toUpperCase())) {
+                                PartCreator.setPartDeviceTypeAndBrand(userInput, userPart);
+                                while (!exitLoop) {
+                                    UserOutput.displayDeviceModelSelectionPage();
+                                    userInput = UserInput.getUserInput();
+                                    if (userInput.equalsIgnoreCase("device list") || userInput.equalsIgnoreCase("list")) {
+                                        UserOutput.displaySupportedDeviceMap(supportedDeviceMap);
+                                    } else if (userInput.equalsIgnoreCase("exit")) {
+                                        exitLoop = true;
+                                    } else if (supportedDeviceMap.containsKey(userInput.toUpperCase())) {
+                                        PartCreator.setPartModel(supportedDeviceMap, userInput, userPart);
+                                        while (!exitLoop) {
+                                            UserOutput.displayRepairQuote(PartLookup.checkPartListForMatch(supportedPartList, userPart));
+                                            exitLoop = true;
+                                        }
+                                    } else {
+                                        UserOutput.displayInvalidInputMessage("Enter \"device list\" or \"list\" for the supported device model list" +
+                                                "\nEnter the device model you want to select" +
+                                                "\nEnter \"exit\" to go back to the home page");
+                                    }
+                                }
+                            } else {
+                                UserOutput.displayInvalidInputMessage("Enter \"type list\" or \"list\" for the supported device type list" +
+                                        "\nEnter the device type you want to select" +
+                                        "\nEnter \"exit\" to go back to the home page");
+                            }
+                        }
+                    } else {
+                        UserOutput.displayInvalidInputMessage("Enter \"repair list\" or \"list\" for the supported repair list" +
+                                "\nEnter the repair you want to select" +
+                                "\nEnter \"exit\" to go back to the home page");
+                    }
+                }
+                exitLoop = false;
             } else {
                 UserOutput.displayInvalidInputMessage("Enter 1 to check the market value of your device" +
                                                      "\nEnter 2 to check the market value of a device you would like to purchase" +

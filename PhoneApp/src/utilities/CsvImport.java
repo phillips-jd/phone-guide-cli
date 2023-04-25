@@ -80,27 +80,27 @@ public class CsvImport {
                 if (partName.equalsIgnoreCase("screen")) {
                     supportedPartList.add(new Screen(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 } else if (partName.equalsIgnoreCase("battery")) {
                     supportedPartList.add(new Battery(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 } else if (partName.equalsIgnoreCase("charge port")) {
                     supportedPartList.add(new ChargePort(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 } else if (partName.equalsIgnoreCase("back glass")) {
                     supportedPartList.add(new BackGlass(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 } else if (partName.equalsIgnoreCase("rear camera lens")) {
                     supportedPartList.add(new RearCameraLens(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 } else if (partName.equalsIgnoreCase("speaker")) {
                     supportedPartList.add(new Speaker(sourceFileStringToArray[0].toUpperCase(), sourceFileStringToArray[1].toUpperCase(),
                             sourceFileStringToArray[2].toUpperCase(), sourceFileStringToArray[3].toUpperCase(),
-                            new BigDecimal(sourceFileStringToArray[5])));
+                            new BigDecimal(sourceFileStringToArray[4])));
                 }
             }
         } catch (FileNotFoundException e) {

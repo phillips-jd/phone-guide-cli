@@ -15,16 +15,22 @@ public class PartCreator {
         PhonePart newUserPart = null;
         if (partName.equalsIgnoreCase("screen")) {
             newUserPart = new Screen();
+            newUserPart.setPartName(partName.toUpperCase());
         } else if (partName.equalsIgnoreCase("battery")) {
             newUserPart = new Battery();
+            newUserPart.setPartName(partName.toUpperCase());
         } else if (partName.equalsIgnoreCase("charge port")) {
             newUserPart = new ChargePort();
+            newUserPart.setPartName(partName.toUpperCase());
         } else if (partName.equalsIgnoreCase("back glass")) {
             newUserPart = new BackGlass();
+            newUserPart.setPartName(partName.toUpperCase());
         } else if (partName.equalsIgnoreCase("rear camera lens")) {
             newUserPart = new RearCameraLens();
+            newUserPart.setPartName(partName.toUpperCase());
         } else if (partName.equalsIgnoreCase("speaker")) {
             newUserPart = new Speaker();
+            newUserPart.setPartName(partName.toUpperCase());
         }
         return newUserPart;
     }

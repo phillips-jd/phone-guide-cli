@@ -2,7 +2,9 @@ package ui;
 
 import models.phone.Phone;
 import models.phonepart.PhonePart;
+import utilities.PartLookup;
 import utilities.PhoneLookup;
+import utilities.RepairPriceCalculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -169,13 +171,23 @@ public class UserOutput {
         System.out.println();
     }
 
+    public static void displayRepairSelectionPage() {
+        System.out.println();
+        System.out.println("For a list of repairs currently supported by this program, enter \"repair list\".");
+        System.out.println("You can enter \"exit\" if you would like to return to the home page.");
+        System.out.println();
+        System.out.println("If you would like to proceed and know the type of repair you want to select, please enter it below.");
+        System.out.println("Example: \"screen\"");
+        System.out.println();
+    }
+
     public static void displayRepairQuote(PhonePart userPart) {
         System.out.println();
         System.out.println("Thanks for the information! Based on the information provided, here's a repair quote: ");
         System.out.println();
         System.out.println(userPart);
         System.out.println();
-        System.out.println("Expected repair price: $");
+        System.out.println("Repair quote: $" + RepairPriceCalculator.calculateRepairQuote(userPart));
         System.out.println();
     }
 

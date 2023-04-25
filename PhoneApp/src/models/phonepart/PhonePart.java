@@ -72,11 +72,11 @@ public abstract class PhonePart {
     public String toString() {
         String phonePartString =
                 "\n------------------------" +
-                "\nPart Details" +
+                "\nRepair Details" +
                 "\n------------------------" +
                 "\nBrand: " + this.brand +
                 "\nModel: " + this.model +
-                "\nPart name: " + this.partName;
+                "\nPart: " + this.partName;
                 // "\nPart cost: " + this.partCost;
         return phonePartString;
     }
