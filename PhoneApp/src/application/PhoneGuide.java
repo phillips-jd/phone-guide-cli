@@ -74,7 +74,10 @@ public class PhoneGuide {
                                                         PhoneCreator.setDeviceWirelessCarrier(userInput, userDevice);
                                                         while(!exitLoop) {
                                                             UserOutput.displayDeviceMarketValuePage(supportedDeviceList, userDevice);
-                                                            exitLoop = true;
+                                                            userInput = UserInput.getUserInput();
+                                                            if(!userInput.isEmpty()) {
+                                                                exitLoop = true;
+                                                            }
                                                         }
                                                     } else if(userInput.equals("5")) {
                                                         exitLoop = true;
@@ -142,8 +145,12 @@ public class PhoneGuide {
                                     } else if (supportedDeviceMap.containsKey(userInput.toUpperCase())) {
                                         PartCreator.setPartModel(supportedDeviceMap, userInput, userPart);
                                         while (!exitLoop) {
-                                            UserOutput.displayRepairQuote(PartLookup.checkPartListForMatch(supportedPartList, userPart));
-                                            exitLoop = true;
+                                            userPart = PartLookup.checkPartListForMatch(supportedPartList, userPart);
+                                            UserOutput.displayRepairQuotePage(userPart);
+                                            userInput = UserInput.getUserInput();
+                                            if(!userInput.isEmpty()) {
+                                                exitLoop = true;
+                                            }
                                         }
                                     } else {
                                         UserOutput.displayInvalidInputMessage("Enter \"device list\" or \"list\" for the supported device model list" +

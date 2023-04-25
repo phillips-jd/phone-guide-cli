@@ -17,6 +17,30 @@ public class RepairPriceCalculator {
     private static final double ROYALTY_RATE = .06;
     private static final double PART_MARKUP_RATE = .03;
 
+    public static BigDecimal getPartCost() {
+        return partCost.setScale(0, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal getLaborRatePerHour() {
+        return laborRatePerHour.setScale(0, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal getLaborExpense() {
+        return laborExpense.setScale(0, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal getRepairMargin() {
+        return repairMargin.setScale(0, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal getRepairPrice() {
+        return repairPrice.setScale(0, RoundingMode.HALF_UP);
+    }
+
+    public static BigDecimal getPartMarkup() {
+        return partMarkup.setScale(0, RoundingMode.HALF_UP);
+    }
+
     public static double calculateLaborHoursPerRepair(PhonePart userPart) {
         double laborHoursPerRepair = 0;
         if(userPart.getPartName().equalsIgnoreCase("screen")) {
@@ -57,15 +81,6 @@ public class RepairPriceCalculator {
         BigDecimal cogsPlusMargin = partCost.add(laborExpense).add(repairMargin).add(partMarkup);
         repairPrice = cogsPlusMargin.divide(new BigDecimal(1 - ROYALTY_RATE), 0, RoundingMode.HALF_UP);
         return repairPrice;
-    }
-
-    public static void main(String[] args) {
-        PhonePart testPart = new Screen();
-        testPart.setPartCost(new BigDecimal("20"));
-        testPart.setPartName("screen");
-        BigDecimal test = calculateRepairQuote(testPart);
-        System.out.println(test);
-
     }
 
 }

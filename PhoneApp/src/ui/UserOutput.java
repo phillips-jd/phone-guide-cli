@@ -12,17 +12,28 @@ import java.util.Map;
 
 public class UserOutput {
 
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -------------- General/Shared menus, pages and messages
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+
     public static void displayHomePage() {
         System.out.println("********************************************");
         System.out.println("***************** Welcome! *****************");
         System.out.println("********************************************");
         System.out.println();
+        System.out.println("Thank you for choosing PhoneGuide, where we guide you" +
+                          "\nthrough selling, buying and/or repairing your device!");
+        System.out.println();
         System.out.println("Please select one of the following options: ");
         System.out.println();
         System.out.println("(1) Looking to sell? See what your phone is worth today!");
-        System.out.println("(2) Looking to buy? Explore your options!");
+        System.out.println("(2) [COMING SOON] Looking to buy? Explore your options!");
         System.out.println("(3) Broken phone? Get a repair estimate!");
-        System.out.println("(4) Exit.");
+        System.out.println("(4) Exit");
         System.out.println();
     }
 
@@ -45,8 +56,6 @@ public class UserOutput {
     }
 
     public static void displaySupportedDeviceMap(Map<String, String> supportedDeviceMap) {
-//        System.out.printf("%-20s %-30s %-20s %-20s %-20s %-20s%n", "Apple iPhone", "Samsung Galaxy", "Google Pixel", "OnePlus", "LG G Series", "LG Stylo");
-//        System.out.println("---------------------------------------------------------------------------------------------------------");
         System.out.println();
         System.out.println("Below is a list of devices currently supported by this program: ");
         System.out.println();
@@ -58,7 +67,7 @@ public class UserOutput {
 
     public static void displayDeviceTypeSelectionPage() {
         System.out.println();
-        System.out.println("For a list of phone types currently supported by this program, enter \"type list\".");
+        System.out.println("For a list of the types of phones currently supported by this program, enter \"type list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
         System.out.println();
         System.out.println("If you would like to proceed and know the type of device you want to select, please enter it below.");
@@ -68,7 +77,7 @@ public class UserOutput {
 
     public static void displayDeviceModelSelectionPage() {
         System.out.println();
-        System.out.println("For a list of device models currently supported by this program, enter \"device list\".");
+        System.out.println("For a list of device models currently supported by this program, enter \"device list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
         System.out.println();
         System.out.println("If you would like to proceed and know the type of device you want to select, please enter it below.");
@@ -76,10 +85,27 @@ public class UserOutput {
         System.out.println();
     }
 
+    public static void displayInvalidInputMessage(String acceptableInputs) {
+        System.out.println();
+        System.out.println("*******************************************************");
+        System.out.println("INVALID INPUT");
+        System.out.println(acceptableInputs);
+        System.out.println("*******************************************************");
+        System.out.println();
+    }
+
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -------------- Sell menus, pages and messages
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+
     public static void displayDeviceCarrierSelectionPage() {
         System.out.println();
         System.out.println("Next, we'll need to know whether your device is unlocked or tied to a specific carrier.");
-        System.out.println("Please select one of the options below. If you're unsure, select the \"unlocked\" option.");
+        System.out.println("Please select one of the options below. If you're unsure or your carrier is not listed, select the \"unlocked\" option.");
         System.out.println();
         System.out.println("(1) Verizon");
         System.out.println("(2) AT&T");
@@ -92,14 +118,14 @@ public class UserOutput {
     public static void displayFunctionCheckPageIfSelling() {
         System.out.println();
         System.out.println("We're going to need to check a few things before getting your device's market value.");
-        System.out.println("First off, is the device fully-functional? Things to check for: ");
+        System.out.println("First off, is the device fully-functional? Here are some things to check for: ");
         System.out.println();
         System.out.println("1. The device turns on");
         System.out.println("2. No visible signs of liquid damage");
         System.out.println("3. No visible signs of damage to the screen");
         System.out.println("4. Power, volume, mute and/or home button(s) operate without issue");
-        System.out.println("5. Both the front and rear camera are operational");
-        System.out.println("6. Your microphone and speaker are operational when making calls, playing music, etc.");
+        System.out.println("5. Both the front and rear camera(s) are working");
+        System.out.println("6. Your microphone and speakers sound clear when making calls, playing music, etc.");
         System.out.println();
         System.out.println("If your device fails to meet any of the above criteria, then you'll need to have it repaired before selling it.");
         System.out.println("If your device meets the above criteria, then proceed to the next menu.");
@@ -144,19 +170,14 @@ public class UserOutput {
         System.out.println("eBay market value: $" + PhoneLookup.getEbayValue(supportedDeviceList, userPhone));
         System.out.println("Gazelle market value: $" + PhoneLookup.getGazelleValue(supportedDeviceList, userPhone));
         System.out.println();
-    }
-
-    public static void displayInvalidInputMessage(String acceptableInputs) {
-        System.out.println();
-        System.out.println("*******************************************************");
-        System.out.println("INVALID INPUT");
-        System.out.println(acceptableInputs);
-        System.out.println("*******************************************************");
+        System.out.println("When you're ready, press any button to return to the home page.");
         System.out.println();
     }
 
     // -----------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -------------- Repair menus, pages and messages
     // -----------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------
     // -----------------------------------------------------------------------------------------
@@ -173,7 +194,7 @@ public class UserOutput {
 
     public static void displayRepairSelectionPage() {
         System.out.println();
-        System.out.println("For a list of repairs currently supported by this program, enter \"repair list\".");
+        System.out.println("For a list of repairs currently supported by this program, enter \"repair list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
         System.out.println();
         System.out.println("If you would like to proceed and know the type of repair you want to select, please enter it below.");
@@ -181,13 +202,25 @@ public class UserOutput {
         System.out.println();
     }
 
-    public static void displayRepairQuote(PhonePart userPart) {
+    public static void displayRepairQuotePage(PhonePart userPart) {
         System.out.println();
         System.out.println("Thanks for the information! Based on the information provided, here's a repair quote: ");
         System.out.println();
         System.out.println(userPart);
         System.out.println();
         System.out.println("Repair quote: $" + RepairPriceCalculator.calculateRepairQuote(userPart));
+        System.out.println();
+        System.out.println("This quote was calculated based on the following: ");
+        System.out.println();
+        System.out.printf("%-15s %5s%n", "Part cost: ", "$" + RepairPriceCalculator.getPartCost());
+        System.out.printf("%-15s %5s%n", "Labor expense: ", "$" + RepairPriceCalculator.getLaborExpense());
+        System.out.printf("%-15s %5s%n", "Repair margin: ", "$" + RepairPriceCalculator.getRepairMargin());
+        System.out.printf("%-15s %5s%n", "Part markup: ", "$" + RepairPriceCalculator.getPartMarkup());
+        System.out.printf("%-15s %5s%n", "Royalty: ", "$" + RepairPriceCalculator.getRepairPrice().subtract(RepairPriceCalculator.getPartCost())
+                .subtract(RepairPriceCalculator.getLaborExpense()).subtract(RepairPriceCalculator.getRepairMargin())
+                .subtract(RepairPriceCalculator.getPartMarkup()));
+        System.out.println();
+        System.out.println("When you're ready, press any button to return to the home page.");
         System.out.println();
     }
 
