@@ -1,6 +1,7 @@
 package ui;
 
-import models.Phone;
+import models.phone.Phone;
+import models.phonepart.PhonePart;
 import utilities.PhoneLookup;
 
 import java.util.ArrayList;
@@ -73,6 +74,19 @@ public class UserOutput {
         System.out.println();
     }
 
+    public static void displayDeviceCarrierSelectionPage() {
+        System.out.println();
+        System.out.println("Next, we'll need to know whether your device is unlocked or tied to a specific carrier.");
+        System.out.println("Please select one of the options below. If you're unsure, select the \"unlocked\" option.");
+        System.out.println();
+        System.out.println("(1) Verizon");
+        System.out.println("(2) AT&T");
+        System.out.println("(3) T-Mobile");
+        System.out.println("(4) Unlocked");
+        System.out.println("(5) Exit");
+        System.out.println();
+    }
+
     public static void displayFunctionCheckPageIfSelling() {
         System.out.println();
         System.out.println("We're going to need to check a few things before getting your device's market value.");
@@ -93,6 +107,7 @@ public class UserOutput {
         System.out.println("(2) My device passed the above criteria. Proceed to the next step.");
         System.out.println();
     }
+
     public static void displayDeviceConditionPageForSelling() {
         System.out.println();
         System.out.println("Let's get the condition of the device you're looking to sell.");
@@ -113,19 +128,6 @@ public class UserOutput {
         System.out.println();
         System.out.println("Excellent:  Device is functional and shows trivial signs of wear and tear; little to no signs of");
         System.out.println("            scratches on the screen, frame, back glass or rear camera lens. Could be described as mint.");
-        System.out.println();
-    }
-
-    public static void displayDeviceCarrierSelectionPage() {
-        System.out.println();
-        System.out.println("Next, we'll need to know whether your device is unlocked or tied to a specific carrier.");
-        System.out.println("Please select one of the options below. If you're unsure, select the \"unlocked\" option.");
-        System.out.println();
-        System.out.println("(1) Verizon");
-        System.out.println("(2) AT&T");
-        System.out.println("(3) T-Mobile");
-        System.out.println("(4) Unlocked");
-        System.out.println("(5) Exit");
         System.out.println();
     }
 
@@ -150,6 +152,33 @@ public class UserOutput {
         System.out.println("*******************************************************");
         System.out.println();
     }
+
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------------------
+
+    public static void displaySupportedRepairTypes(List<String> supportedRepairList) {
+        System.out.println();
+        System.out.println("Below is a list of repair types currently supported by this program: ");
+        System.out.println();
+        for (String currentString : supportedRepairList) {
+            System.out.println(currentString);
+        }
+        System.out.println();
+    }
+
+    public static void displayRepairQuote(PhonePart userPart) {
+        System.out.println();
+        System.out.println("Thanks for the information! Based on the information provided, here's a repair quote: ");
+        System.out.println();
+        System.out.println(userPart);
+        System.out.println();
+        System.out.println("Expected repair price: $");
+        System.out.println();
+    }
+
 
 
 }

@@ -1,23 +1,23 @@
-package models;
+package models.phone;
 
 import java.math.BigDecimal;
 
-public class LGGSeries extends Phone {
+public class LGStylo extends Phone{
 
-    public LGGSeries() {
+    public LGStylo() {
         super();
     }
 
-    public LGGSeries(String deviceType, String brand, String model) {
+    public LGStylo(String deviceType, String brand, String model) {
         super(deviceType, brand, model);
     }
 
-    public LGGSeries(String deviceType, String brand, String model, String wirelessCarrier,
+    public LGStylo(String deviceType, String brand, String model, String wirelessCarrier,
                    String condition, BigDecimal averagePreownedMarketValue) {
         super(deviceType, brand, model, wirelessCarrier, condition, averagePreownedMarketValue);
     }
 
-    public LGGSeries(String deviceType, String brand, String model, String wirelessCarrier,
+    public LGStylo(String deviceType, String brand, String model, String wirelessCarrier,
                    String condition, BigDecimal averagePreownedMarketValue,
                    BigDecimal swappaMarketValue, BigDecimal ebayMarketValue, BigDecimal gazelleMarketValue) {
         super(deviceType, brand, model, wirelessCarrier, condition, averagePreownedMarketValue, swappaMarketValue, ebayMarketValue, gazelleMarketValue);

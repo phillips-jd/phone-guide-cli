@@ -1,6 +1,6 @@
 package utilities;
 
-import models.*;
+import models.phone.Phone;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

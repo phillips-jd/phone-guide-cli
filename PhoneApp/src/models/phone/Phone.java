@@ -1,10 +1,8 @@
-package models;
-
-import interfaces.Repairable;
+package models.phone;
 
 import java.math.BigDecimal;
 
-public abstract class Phone implements Repairable {
+public abstract class Phone {
 
     // Properties
     private String deviceType;
@@ -12,13 +10,10 @@ public abstract class Phone implements Repairable {
     private String model;
     private String wirelessCarrier;
     private String condition;
-    private boolean isBroken = false;
-    private boolean isRepairable = true;
     private BigDecimal averagePreownedMarketValue;
     private BigDecimal swappaMarketValue;
     private BigDecimal ebayMarketValue;
     private BigDecimal gazelleMarketValue;
-    private BigDecimal repairCost;
 
 
 

@@ -1,6 +1,6 @@
 package utilities;
 
-import models.*;
+import models.phone.*;
 
 import java.util.Map;
 

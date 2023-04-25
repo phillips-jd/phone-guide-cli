@@ -1,17 +1,14 @@
 package application;
 
-import models.Phone;
-import models.iPhone;
+import models.phone.Phone;
+import models.phonepart.PhonePart;
 import ui.UserInput;
 import ui.UserOutput;
 import utilities.CsvImport;
 import utilities.PhoneCreator;
-import utilities.PhoneLookup;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneGuide {
 
@@ -20,12 +17,16 @@ public class PhoneGuide {
 
     public void run() {
 
-        CsvImport sourceFileImport = new CsvImport();
-        String filePath = "phone.csv";
-        File sourceFile = new File(filePath);
-        List<Phone> supportedDeviceList = sourceFileImport.importSourceFileToList(sourceFile);
-        Map<String, String> supportedDeviceMap = sourceFileImport.importSourceFileToMap(sourceFile);
+        String filePathForDevices = "phone.csv";
+        File deviceSourceFile = new File(filePathForDevices);
+        List<Phone> supportedDeviceList = CsvImport.importDeviceSourceFileToList(deviceSourceFile);
+        Map<String, String> supportedDeviceMap = CsvImport.importDeviceSourceFileToMap(deviceSourceFile);
         List<String> supportedDeviceTypeList = createSupportedDeviceTypeList(supportedDeviceList);
+
+        String filePathForParts = "repair.csv";
+        File partSourceFile = new File(filePathForParts);
+        List<PhonePart> supportedPartList = CsvImport.importPartSourceFileToList(partSourceFile);
+        List<String> supportedRepairList = createSupportedRepairList(supportedPartList);
 
         while(!exitLoop) {
             UserOutput.displayHomePage();
@@ -135,7 +136,26 @@ public class PhoneGuide {
                 supportedDeviceTypeList.add(currentPhone.getDeviceType());
             }
         }
+        Collections.sort(supportedDeviceTypeList);
         return supportedDeviceTypeList;
+    }
+
+    // purpose of this method is to create a list of supported repairs without duplicates
+    // this list is used to compare the user's input on the "displayRepairTypeSelectionPage"
+    // if the list contains the user's input, they can proceed to the next step
+    // supportedPartList has hundreds of the same part type due to different models
+    // Ex: PhonePart: Screen includes iPhone 11 screens, iPhone 12 screens, etc.
+    public static List<String> createSupportedRepairList(List<PhonePart> supportedPartList) {
+        List<String> supportedRepairList = new ArrayList<>();
+        for(PhonePart currentPart : supportedPartList) {
+            if(supportedRepairList.contains(currentPart.getPartName())) {
+                continue;
+            } else {
+                supportedRepairList.add(currentPart.getPartName());
+            }
+        }
+        Collections.sort(supportedRepairList);
+        return supportedRepairList;
     }
 
 
