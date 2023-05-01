@@ -67,6 +67,10 @@ public class UserOutput {
 
     public static void displayDeviceTypeSelectionPage() {
         System.out.println();
+        System.out.println("********************************************");
+        System.out.println("**************** DEVICE TYPE ***************");
+        System.out.println("********************************************");
+        System.out.println();
         System.out.println("For a list of the types of phones currently supported by this program, enter \"type list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
         System.out.println();
@@ -76,6 +80,10 @@ public class UserOutput {
     }
 
     public static void displayDeviceModelSelectionPage() {
+        System.out.println();
+        System.out.println("********************************************");
+        System.out.println("*************** DEVICE MODEL ***************");
+        System.out.println("********************************************");
         System.out.println();
         System.out.println("For a list of device models currently supported by this program, enter \"device list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
@@ -104,6 +112,10 @@ public class UserOutput {
 
     public static void displayDeviceCarrierSelectionPage() {
         System.out.println();
+        System.out.println("********************************************");
+        System.out.println("*************** DEVICE CARRIER *************");
+        System.out.println("********************************************");
+        System.out.println();
         System.out.println("Next, we'll need to know whether your device is unlocked or tied to a specific carrier.");
         System.out.println("Please select one of the options below. If you're unsure or your carrier is not listed, select the \"unlocked\" option.");
         System.out.println();
@@ -116,6 +128,10 @@ public class UserOutput {
     }
 
     public static void displayFunctionCheckPageIfSelling() {
+        System.out.println();
+        System.out.println("********************************************");
+        System.out.println("************** FUNCTION CHECK **************");
+        System.out.println("********************************************");
         System.out.println();
         System.out.println("We're going to need to check a few things before getting your device's market value.");
         System.out.println("First off, is the device fully-functional? Here are some things to check for: ");
@@ -137,6 +153,10 @@ public class UserOutput {
     }
 
     public static void displayDeviceConditionPageForSelling() {
+        System.out.println();
+        System.out.println("********************************************");
+        System.out.println("************* DEVICE CONDITION *************");
+        System.out.println("********************************************");
         System.out.println();
         System.out.println("Let's get the condition of the device you're looking to sell.");
         System.out.println("Please select one of the conditions below: ");
@@ -160,6 +180,10 @@ public class UserOutput {
     }
 
     public static void displayDeviceMarketValuePage(List<Phone> supportedDeviceList, Phone userPhone) {
+        System.out.println();
+        System.out.println("********************************************");
+        System.out.println("*************** MARKET VALUE ***************");
+        System.out.println("********************************************");
         System.out.println();
         System.out.println("Thanks for the information! The market value for the device you selected is below: ");
         System.out.println();
@@ -194,6 +218,10 @@ public class UserOutput {
 
     public static void displayRepairSelectionPage() {
         System.out.println();
+        System.out.println("********************************************");
+        System.out.println("************* REPAIR SELECTION *************");
+        System.out.println("********************************************");
+        System.out.println();
         System.out.println("For a list of repairs currently supported by this program, enter \"repair list\" or simply \"list\".");
         System.out.println("You can enter \"exit\" if you would like to return to the home page.");
         System.out.println();
@@ -203,6 +231,10 @@ public class UserOutput {
     }
 
     public static void displayRepairQuotePage(PhonePart userPart) {
+        System.out.println();
+        System.out.println("********************************************");
+        System.out.println("************** REPAIR ESTIMATE *************");
+        System.out.println("********************************************");
         System.out.println();
         System.out.println("Thanks for the information! Based on the information provided, here's a repair quote: ");
         System.out.println();

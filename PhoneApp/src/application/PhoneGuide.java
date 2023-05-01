@@ -44,7 +44,7 @@ public class PhoneGuide {
                         UserOutput.displaySupportedDeviceType(supportedDeviceList);
                     } else if(userInput.equalsIgnoreCase("exit")) {
                         exitLoop = true;
-                    } else if(supportedDeviceTypeList.contains(userInput.toUpperCase())) {
+                    } else if(supportedDeviceTypeList.contains(userInput.toUpperCase().trim())) {
                         Phone userDevice = PhoneCreator.createUserPhone(userInput);
                         PhoneCreator.setDeviceTypeAndBrand(userInput, userDevice);
                         while (!exitLoop) {
@@ -54,7 +54,7 @@ public class PhoneGuide {
                                 UserOutput.displaySupportedDeviceMap(supportedDeviceMap);
                             } else if(userInput.equalsIgnoreCase("exit")) {
                                 exitLoop = true;
-                            } else if(supportedDeviceMap.containsKey(userInput.toUpperCase())) {
+                            } else if(supportedDeviceMap.containsKey(userInput.toUpperCase().trim())) {
                                 PhoneCreator.setDeviceModel(supportedDeviceMap, userInput, userDevice);
                                 while(!exitLoop) {
                                     UserOutput.displayFunctionCheckPageIfSelling();
@@ -112,9 +112,23 @@ public class PhoneGuide {
                 }
                 exitLoop = false;
                 // the section belows deals with the buying process
-                // scope change: create a list of phones for comparison?
+                // TODO: scope change: create a list of phones for comparison?
             } else if(userInput.equals("2")) {
-
+//                while (!exitLoop) {
+//                    UserOutput.displayDeviceModelSelectionPage();
+//                    userInput = UserInput.getUserInput();
+//                    if (userInput.equalsIgnoreCase("device list") || userInput.equalsIgnoreCase("list")) {
+//                        UserOutput.displaySupportedDeviceMap(supportedDeviceMap);
+//                    } else if (userInput.equalsIgnoreCase("exit")) {
+//                        exitLoop = true;
+//                    } else if (supportedDeviceMap.containsKey(userInput.toUpperCase())) {
+//                        PhoneCreator.setDeviceModel(supportedDeviceMap, userInput, userDevice);
+//                    } else {
+//                        UserOutput.displayInvalidInputMessage("Enter \"device list\" or \"list\" for the supported device model list" +
+//                                "\nEnter the device model you want to select" +
+//                                "\nEnter \"exit\" to go back to the home page");
+//                    }
+//                }
                 // the section belows deals with the repair quote process
             } else if(userInput.equals("3")) {
                 while (!exitLoop) {
@@ -124,7 +138,7 @@ public class PhoneGuide {
                         UserOutput.displaySupportedRepairTypes(supportedRepairList);
                     } else if (userInput.equalsIgnoreCase("exit")) {
                         exitLoop = true;
-                    } else if (supportedRepairList.contains(userInput.toUpperCase())) {
+                    } else if (supportedRepairList.contains(userInput.toUpperCase().trim())) {
                         PhonePart userPart = PartCreator.createUserPartForRepairQuote(userInput);
                         while (!exitLoop) {
                             UserOutput.displayDeviceTypeSelectionPage();
@@ -133,7 +147,7 @@ public class PhoneGuide {
                                 UserOutput.displaySupportedDeviceType(supportedDeviceList);
                             } else if (userInput.equalsIgnoreCase("exit")) {
                                 exitLoop = true;
-                            } else if (supportedDeviceTypeList.contains(userInput.toUpperCase())) {
+                            } else if (supportedDeviceTypeList.contains(userInput.toUpperCase().trim())) {
                                 PartCreator.setPartDeviceTypeAndBrand(userInput, userPart);
                                 while (!exitLoop) {
                                     UserOutput.displayDeviceModelSelectionPage();
@@ -142,7 +156,7 @@ public class PhoneGuide {
                                         UserOutput.displaySupportedDeviceMap(supportedDeviceMap);
                                     } else if (userInput.equalsIgnoreCase("exit")) {
                                         exitLoop = true;
-                                    } else if (supportedDeviceMap.containsKey(userInput.toUpperCase())) {
+                                    } else if (supportedDeviceMap.containsKey(userInput.toUpperCase().trim())) {
                                         PartCreator.setPartModel(supportedDeviceMap, userInput, userPart);
                                         while (!exitLoop) {
                                             userPart = PartLookup.checkPartListForMatch(supportedPartList, userPart);

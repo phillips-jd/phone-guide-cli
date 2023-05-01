@@ -14,6 +14,7 @@ public class RepairPriceCalculator {
     private static BigDecimal repairMargin;
     private static BigDecimal repairPrice;
     private static BigDecimal partMarkup;
+    private static BigDecimal cogsPlusMargin;
     private static final double ROYALTY_RATE = .06;
     private static final double PART_MARKUP_RATE = .03;
 
@@ -73,12 +74,17 @@ public class RepairPriceCalculator {
         return repairMargin;
     }
 
+    public static BigDecimal calculateCogsPlusRepairMargin(BigDecimal partCost, BigDecimal laborExpense,
+                                                           BigDecimal repairMargin, BigDecimal partMarkup) {
+        return partCost.add(laborExpense).add(repairMargin).add(partMarkup);
+    }
+
     public static BigDecimal calculateRepairQuote(PhonePart userPart) {
         partCost = userPart.getPartCost();
         laborExpense = laborRatePerHour.multiply(new BigDecimal(calculateLaborHoursPerRepair(userPart)));
         repairMargin = calculateRepairMargin(userPart);
         partMarkup = userPart.getPartCost().multiply(new BigDecimal(PART_MARKUP_RATE));
-        BigDecimal cogsPlusMargin = partCost.add(laborExpense).add(repairMargin).add(partMarkup);
+        cogsPlusMargin = calculateCogsPlusRepairMargin(partCost, laborExpense, repairMargin, partMarkup);
         repairPrice = cogsPlusMargin.divide(new BigDecimal(1 - ROYALTY_RATE), 0, RoundingMode.HALF_UP);
         return repairPrice;
     }
