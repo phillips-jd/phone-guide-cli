@@ -75,7 +75,7 @@ public class PhoneGuide {
                                                         while(!exitLoop) {
                                                             UserOutput.displayDeviceMarketValuePage(supportedDeviceList, userDevice);
                                                             userInput = UserInput.getUserInput();
-                                                            if(!userInput.isEmpty()) {
+                                                            if(!userInput.isEmpty() || userInput.isBlank()) {
                                                                 exitLoop = true;
                                                             }
                                                         }
@@ -114,6 +114,7 @@ public class PhoneGuide {
                 // the section belows deals with the buying process
                 // TODO: scope change: create a list of phones for comparison?
             } else if(userInput.equals("2")) {
+                exitLoop = true;
 //                while (!exitLoop) {
 //                    UserOutput.displayDeviceModelSelectionPage();
 //                    userInput = UserInput.getUserInput();
@@ -162,7 +163,7 @@ public class PhoneGuide {
                                             userPart = PartLookup.checkPartListForMatch(supportedPartList, userPart);
                                             UserOutput.displayRepairQuotePage(userPart);
                                             userInput = UserInput.getUserInput();
-                                            if(!userInput.isEmpty()) {
+                                            if(!userInput.isEmpty() || userInput.isBlank()) {
                                                 exitLoop = true;
                                             }
                                         }

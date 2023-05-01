@@ -236,8 +236,7 @@ public class UserOutput {
         System.out.println("************** REPAIR ESTIMATE *************");
         System.out.println("********************************************");
         System.out.println();
-        System.out.println("Thanks for the information! Based on the information provided, here's a repair quote: ");
-        System.out.println();
+        System.out.println("Thanks for the information! Based on what you've provided, here's a repair quote: ");
         System.out.println(userPart);
         System.out.println();
         System.out.println("Repair quote: $" + RepairPriceCalculator.calculateRepairQuote(userPart));
